@@ -1,12 +1,12 @@
-import Layout from '../components/Layout';
 import React from 'react';
+import Layout from '../components/Layout';
 
-function Money() {
+const Money=()=>{
   return (
     <Layout>
-      <h2>记账页面</h2>
+    <div>money</div>
     </Layout>
-  );
+  )
 }
 
 export default Money;

@@ -1,12 +1,12 @@
-import Layout from '../components/Layout';
 import React from 'react';
+import Layout from '../components/Layout';
 
-function Tags() {
+const Tags=()=>{
   return (
     <Layout>
-      <h2>标签页面</h2>
+      <div>Tags</div>
     </Layout>
-  );
+  )
 }
 
 export default Tags;
