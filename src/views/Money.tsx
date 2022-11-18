@@ -3,6 +3,8 @@ import Layout from '../components/Layout';
 import styled from 'styled-components';
 
 const TagsSection = styled.section`
+  flex-grow: 1;
+  justify-content: end;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -124,10 +126,15 @@ const NumberPadSection =styled.section`
   } 
   }
 `
+const MyLayout = styled(Layout)`
+    display: flex;
+    flex-direction: column;  
+`
+
 
 const Money=()=>{
   return (
-    <Layout>
+    <MyLayout name={'test'}>
       <TagsSection>
         <ol>
           <li>衣</li>
@@ -168,7 +175,7 @@ const Money=()=>{
           <button className="dot">.</button>
         </div>
       </NumberPadSection>
-    </Layout>
+    </MyLayout>
   )
 }
 
