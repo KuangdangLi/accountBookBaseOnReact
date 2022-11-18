@@ -27,6 +27,29 @@ const TagsSection = styled.section`
     margin-top: 18px;
   }
 `
+const NotesSection = styled.section`
+  background-color: #f5f5f5;
+  padding: 0 16px;
+  font-size: 14px;
+  >label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    >span{
+      color: #333;
+      white-space: nowrap;
+      margin-right: 16px;
+    }
+    >input{
+      border: none;
+      display: block;
+      width: 100%;
+      height: 72px;
+      background:none;
+    }  
+  }
+`
 
 const Money=()=>{
   return (
@@ -40,8 +63,15 @@ const Money=()=>{
         </ol>
         <button className="button">新增标签</button>
       </TagsSection>
-      <section>notes</section>
-      <section>types</section>
+      <NotesSection>
+        <label>
+          <span>备注</span>
+          <input type="text"/>
+        </label>
+      </NotesSection>
+      <section>
+        types
+      </section>
       <section>numberPad</section>
     </Layout>
   )
