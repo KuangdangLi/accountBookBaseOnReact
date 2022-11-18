@@ -23,4 +23,7 @@ button{
   height: 1em;
   display: inline-block;
 }
+:focus{
+  outline: none;
+}
 
