@@ -38,14 +38,19 @@ const Wrapper = styled.section`
   }
 `
 
-const TagsSection:React.FC = ()=>{
+type Props = {
+  value: string,
+  onChange: (tag:string) => void
+}
+
+const TagsSection:React.FC<Props> = (props)=>{
   const [tags,setTags] = useState(['衣','食','住','行'])
-  const [selectedTag,setSelectedTag] = useState('')
+  // const [selectedTag,setSelectedTag] = useState('')
   const selectTag =(tag:string)=>{
-    if(!selectedTag || selectedTag !== tag){
-      setSelectedTag(tag)
+    if(!props.value || props.value !== tag){
+      props.onChange(tag)
     }else{
-      setSelectedTag('')
+      props.onChange('')
     }
   }
   const addTag = ()=>{
@@ -69,7 +74,7 @@ const TagsSection:React.FC = ()=>{
   return (
     <Wrapper>
     <ol>
-      {tags.map(tag=><li key={tag} onClick={()=>selectTag(tag)} className={tag === selectedTag ? 'selected' : ''}>{tag}</li>)}
+      {tags.map(tag=><li key={tag} onClick={()=>selectTag(tag)} className={tag === props.value ? 'selected' : ''}>{tag}</li>)}
     </ol>
   <button className="button" onClick={addTag}>新增标签</button>
     </Wrapper>

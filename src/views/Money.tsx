@@ -24,7 +24,7 @@ const Money=()=>{
   }
   return (
     <MyLayout>
-      <TagsSection />
+      <TagsSection value={record.tag} onChange={(tag)=>{onChange({tag})}}/>
       <NotesSection />
       <TypesSection />
       <NumberPadSection />
