@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import React, {useState} from 'react';
 
-const TypeSection = styled.section`
+const Wrapper = styled.section`
+  >ol{
   display: flex;
   flex-direction: row;
-  >div{
+  >li{
     width: 50%;
     font-size: 24px;
     line-height: 64px;
@@ -20,5 +22,27 @@ const TypeSection = styled.section`
     left: 0;
   }
   }
+  }
 `
-export {TypeSection};
+
+
+
+const TypesSection = ()=>{
+  const typeMap = {
+    '-':'支出',
+    '+':'收入'
+  }
+  const [type,setType] = useState('-')
+  type X = keyof typeof typeMap
+  const [typeList] = useState<X[]>(['-','+'])
+  return (
+    <Wrapper>
+      <ol>
+        {typeList.map(item=><li key={item} className={item === type ? 'selected' : ''} onClick={()=>{setType(item)}}>{typeMap[item]}</li>)}
+      </ol>
+    {/*<div >支出</div>*/}
+    {/*<div className={'+' === type ? 'selected' : ''} onClick={()=>{setType('+')}}>收入</div>*/}
+    </Wrapper>
+  )
+}
+export {TypesSection};
