@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Layout from '../components/Layout';
 import styled from 'styled-components';
 import {NotesSection} from './Money/NotesSection';
@@ -12,6 +12,16 @@ const MyLayout = styled(Layout)`
 `
 
 const Money=()=>{
+  const [record,setRecord] = useState({
+    tag: '',
+    note: '',
+    type: '-',
+    amount: 0
+  })
+  type Record = typeof record
+  const onChange = (obj:Partial<Record>)=>{
+    setRecord({...record, ...obj})
+  }
   return (
     <MyLayout>
       <TagsSection />
