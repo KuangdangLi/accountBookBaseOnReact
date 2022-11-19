@@ -10,12 +10,13 @@ const MyLayout = styled(Layout)`
     display: flex;
     flex-direction: column;  
 `
+type Type = '-' | '+'
 
 const Money=()=>{
   const [record,setRecord] = useState({
     tag: '',
     note: '',
-    type: '-',
+    type: '-' as Type,
     amount: 0
   })
   type Record = typeof record
@@ -26,7 +27,7 @@ const Money=()=>{
     <MyLayout>
       <TagsSection value={record.tag} onChange={(tag)=>{onChange({tag})}}/>
       <NotesSection value={record.note} onChange={(note)=>{onChange({note})}}/>
-      <TypesSection />
+      <TypesSection value={record.type} onChange={(type)=>{onChange({type})}}/>
       <NumberPadSection />
     </MyLayout>
   )
