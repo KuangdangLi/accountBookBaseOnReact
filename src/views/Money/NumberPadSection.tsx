@@ -1,42 +1,14 @@
 import React, {useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
+import {compute} from './NumberPadSection/Compute';
 
 
 const NumberPadSection = ()=>{
   const [output,setOutput] = useState('0')
   const computeOutput = (e:React.MouseEvent)=>{
     const value =  (e.target as HTMLButtonElement).textContent
-    switch (value){
-      case '1':
-      case '2':
-      case '3':
-      case '4':
-      case '5':
-      case '6':
-      case '7':
-      case '8':
-      case '9':
-      case '0':
-        if(output === '0'){
-          setOutput(value)
-        }else{
-          setOutput(output + value)
-        }
-        break
-      case '删除':
-        if(output.length === 1){setOutput('0');return; }
-        setOutput(output.slice(0,-1))
-        break
-      case '清空':
-        setOutput('0')
-        break
-      case 'OK':
-        console.log('OK');
-        break
-      case '.':
-        if(output.indexOf('.')>=0){return}
-        setOutput(output + value)
-        break
+    if(value){
+      setOutput(compute(value,output))
     }
   }
   return (
