@@ -27,7 +27,6 @@ const Wrapper = styled.section`
 
 const NotesSection:React.FC = ()=>{
   const [note,setNote] = useState('')
-  console.log(note);
   return (
     <Wrapper>
     <label>
