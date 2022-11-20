@@ -3,9 +3,11 @@ import Layout from '../components/Layout';
 import {useTags} from 'useTags';
 import styled from 'styled-components';
 import Icon from '../components/icon';
+import {Link} from 'react-router-dom';
 
 const TagList = styled.ol`
  >li{
+   >a{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,6 +19,7 @@ const TagList = styled.ol`
    >svg.icon{
      width: 20px;
      height: 20px;
+   }
    }
  }
 `
@@ -39,9 +42,11 @@ const Tags=()=>{
     <Layout>
       <TagList>
       {tags.map(tag=>
-        <li>
+        <li key={tag}>
+          <Link to={'/tags/:'+ tag}>
           <span>{tag}</span>
           <Icon name={'right'} />
+          </Link>
         </li>)}
       </TagList>
       <Space />

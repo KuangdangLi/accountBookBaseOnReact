@@ -4,14 +4,16 @@ import Money from './views/Money';
 import Statistics from './views/Statistics';
 import Tags from './views/Tags';
 import NoMatch from './views/NoMatch';
+import {Tag} from './views/Tag';
 
 function App() {
   return (
     <Router>
         <Switch>
-          <Route path="/money"><Money /></Route>
-          <Route path="/tags"><Tags /></Route>
-          <Route path="/statistics"><Statistics /></Route>
+          <Route exact path="/money"><Money /></Route>
+          <Route exact path="/tags"><Tags /></Route>
+          <Route exact path="/tags/:tag"><Tag /></Route>
+          <Route exact path="/statistics"><Statistics /></Route>
           <Redirect exact from="/" to="/money"></Redirect>
           <Route path="*"><NoMatch /></Route>
         </Switch>
