@@ -12,6 +12,7 @@ const Main = styled.main`
   flex-grow: 1;
   overflow: hidden;
   text-align: center;
+  background-color: #f5f5f5;
 `
 
 const Layout=(props:any)=>{
