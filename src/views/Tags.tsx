@@ -4,6 +4,7 @@ import {useTags} from 'useTags';
 import styled from 'styled-components';
 import Icon from '../components/icon';
 import {Link} from 'react-router-dom';
+import {Button} from '../components/Button';
 
 const TagList = styled.ol`
  >li{
@@ -22,14 +23,6 @@ const TagList = styled.ol`
    }
    }
  }
-`
-
-const Button = styled.button`
-  font-size: 16px;
-  padding: 9px 16px;
-  background: #767676;
-  color: white;
-  border-radius: 4px;
 `
 
 const Space = styled.div`
