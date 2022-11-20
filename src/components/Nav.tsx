@@ -44,13 +44,13 @@ const Nav=() =>{
     <NavWrapper>
       <ul>
         <li>
-          <NavLink to="/money" activeClassName="selected">
+          <NavLink to="/money"  activeClassName="selected">
             <Icon name="money" />
             <div>money</div>
           </NavLink>
         </li>
         <li>
-          <NavLink to="/tags" activeClassName="selected">
+          <NavLink to="/tags" exact activeClassName="selected">
             <Icon name="label" />
             <div>tags</div>
           </NavLink>
