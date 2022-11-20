@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Icon from '../components/icon';
 import {Link} from 'react-router-dom';
 import {Button} from '../components/Button';
+import {Space} from '../components/Space';
 
 const TagList = styled.ol`
  >li{
@@ -25,9 +26,6 @@ const TagList = styled.ol`
  }
 `
 
-const Space = styled.div`
-height: 54px;
-`
 
 const Tags=()=>{
   const {tags} = useTags()
