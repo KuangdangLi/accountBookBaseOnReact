@@ -9,7 +9,8 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 16px 12px;
+  padding: 16px 12px; 
+  background-color: #fff;
   ol{
     display: flex;
     flex-direction: row;
