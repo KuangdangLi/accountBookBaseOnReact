@@ -8,6 +8,7 @@ const Wrapper =styled.section`
     line-height: 72px;
     text-align: right;
     padding-right: 16px;
+    background-color: #fff;
   }
   >.pad{
   button{
