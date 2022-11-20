@@ -16,15 +16,13 @@ const compute = (value:string,output:string)=>{
         return output + value
       }
     case '删除':
-      if(output.length === 1){return('0')}
       return output.slice(0,-1)
     case '清空':
-      return '0'
+      return ''
     case '.':
       if(output.indexOf('.')>=0){return output}
-      return output + value
-    case 'OK':
-      return output
+      console.log('执行了吗');
+      return output + '.'
     default:
       return ''
   }
