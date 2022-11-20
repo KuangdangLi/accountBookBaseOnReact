@@ -11,21 +11,28 @@ const MyLayout = styled(Layout)`
     flex-direction: column;  
 `
 type Type = '-' | '+'
+// type Tag = {id:number,name:string}
+
+type Record = {
+  tagID:number,
+  note:string,
+  type:Type,
+  amount: number
+}
 
 const Money=()=>{
-  const [record,setRecord] = useState({
-    tag: '',
+  const [record,setRecord] = useState<Record>({
+    tagID: 0 ,
     note: '',
     type: '-' as Type,
     amount: 0
   })
-  type Record = typeof record
   const onChange = (obj:Partial<Record>)=>{
     setRecord({...record, ...obj})
   }
   return (
     <MyLayout>
-      <TagsSection value={record.tag} onChange={(tag)=>{onChange({tag})}}/>
+      <TagsSection value={record.tagID} onChange={(tagID)=>{onChange({tagID})}}/>
       <NotesSection value={record.note} onChange={(note)=>{onChange({note})}}/>
       <TypesSection value={record.type} onChange={(type)=>{onChange({type})}}/>
       <NumberPadSection value={record.amount}

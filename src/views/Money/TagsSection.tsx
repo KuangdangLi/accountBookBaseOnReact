@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import {useTags} from '../../useTags';
+import {createdID} from '../../lib/createdID';
 
 const Wrapper = styled.section`
   flex-grow: 1;
@@ -40,17 +41,17 @@ const Wrapper = styled.section`
 `
 
 type Props = {
-  value: string,
-  onChange: (tag:string) => void
+  value: number,
+  onChange: (tagID:number) => void
 }
 
 const TagsSection:React.FC<Props> = (props)=>{
   const {tags,setTags} = useTags()
-  const selectTag =(tag:string)=>{
-    if(!props.value || props.value !== tag){
-      props.onChange(tag)
+  const selectTag =(tagID:number)=>{
+    if(!props.value || props.value !== tagID){
+      props.onChange(tagID)
     }else{
-      props.onChange('')
+      props.onChange(0)
     }
   }
   const addTag = ()=>{
@@ -59,22 +60,24 @@ const TagsSection:React.FC<Props> = (props)=>{
       window.alert('请输入标签名')
     }else if(newTagName === null){
       return
-    }else if(tags.indexOf(newTagName)>=0){
+    }else if(tags.map(tag=>tag.name).indexOf(newTagName)>=0){
       window.alert('不能输入重复的标签名')
       return;
     }else if(newTagName.length>4){
       window.alert('标签名过长')
       return;
     }else{
-      setTags([...tags,newTagName])
+      setTags([...tags, {ID:createdID(),name:newTagName}])
     }
     console.log(newTagName);
     console.log(typeof newTagName);
   }
   return (
     <Wrapper>
+      {tags.map(tag=>tag.ID)}
+      {tags.map(tag=>tag.name)}
     <ol>
-      {tags.map(tag=><li key={tag} onClick={()=>selectTag(tag)} className={tag === props.value ? 'selected' : ''}>{tag}</li>)}
+      {tags.map(tag=><li key={tag.ID} onClick={()=>selectTag(tag.ID)} className={tag.ID === props.value ? 'selected' : ''}>{tag.name}</li>)}
     </ol>
   <button className="button" onClick={addTag}>新增标签</button>
     </Wrapper>
