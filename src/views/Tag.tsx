@@ -6,7 +6,6 @@ import Icon from '../components/icon';
 import {Button} from '../components/Button';
 import styled from 'styled-components';
 import {Input} from '../components/Input';
-import {NotesSection} from './Money/NotesSection';
 import {Space} from '../components/Space';
 
 type Params = {
@@ -34,20 +33,26 @@ const InputWrapper = styled.div`
 `
 
 const Tag:React.FC = ()=>{
-  const {findTag} = useTags()
+  const {findTag,removeTag,updateTag} = useTags()
   const {id} = useParams<Params>()
-  const tag = findTag(id)
+  const ID = parseFloat(id)
+  const tag = findTag(ID)
+  const content = (tag:{ID:number,name:string})=>(
+    <div>
+    <InputWrapper>
+      <Input label='标签名' type="text"  placeholder='请输入标签名' value={tag.name} onChange={(e)=>{updateTag(ID,{name:e.target.value})}}/>
+    </InputWrapper>
+  <Space />
+  <Button onClick={()=>{removeTag(ID)}}>删除标签</Button>
+    </div>
+  )
   return (
     <Layout>
       <TopBar>
         <Icon name={'left'} />
         <span>编辑标签</span>
       </TopBar>
-      <InputWrapper>
-        <Input label='标签名' type="text"  placeholder='请输入标签名' value={tag.name}/>
-      </InputWrapper>
-      <Space />
-      <Button>删除标签</Button>
+      {tag ? content(tag) : <div>标签不存在</div>}
     </Layout>
   )
 }
