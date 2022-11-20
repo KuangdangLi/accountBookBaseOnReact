@@ -13,7 +13,10 @@ const defaultTags:Tag[] =
 
 const useTags = ()=>{
   const [tags,setTags] = useState(defaultTags)
-  return {tags,setTags}
+  const findTag = (id:string)=>{
+     return  tags.filter(tag => tag.ID === parseFloat(id))[0];
+  }
+  return {tags,setTags,findTag}
 }
 
 export {useTags}
