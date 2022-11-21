@@ -1,18 +1,28 @@
-import {useState} from 'react';
-import {createdID} from './lib/createdID';
+import {useEffect, useState} from 'react';
+import {createdID} from '../lib/createdID';
+import {useUpdate} from './useUpdate';
 
 type Tag = {ID:number,name:string}
 
-const defaultTags:Tag[] =
-  [
+const defaultTags = ()=>{
+  return [
     {ID:createdID(),name:'衣'},
     {ID:createdID(),name:'食'},
     {ID:createdID(),name:'住'},
     {ID:createdID(),name:'行'}
   ]
+}
 
 const useTags = ()=>{
-  const [tags,setTags] = useState(defaultTags)
+  const [tags,setTags] = useState<{ID:number,name:string}[]>([])
+  useEffect(()=>{
+    const localTagList = JSON.parse(window.localStorage.getItem('tagList') || '[]')
+    localTagList.length === 0 ? setTags(defaultTags()) : setTags(localTagList)
+  },[])
+  useUpdate(()=>{
+    window.localStorage.setItem('tagList',JSON.stringify(tags))
+    console.log('执行了');
+  },tags)
   const findTag = (id:number)=>{
      return  tags.filter(tag => tag.ID === id)[0];
   }

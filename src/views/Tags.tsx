@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import {useTags} from 'useTags';
+import {useTags} from 'Hooks/useTags';
 import styled from 'styled-components';
 import Icon from '../components/icon';
 import {Link} from 'react-router-dom';
@@ -35,7 +35,7 @@ const Tags=()=>{
       {tags.map(tag=>
         <li key={tag.ID}>
           <Link to={'/tags/'+ tag.ID}>
-          <span>{tag.name}</span>
+          <span>{tag.ID + tag.name}</span>
           <Icon name={'right'} />
           </Link>
         </li>)}
