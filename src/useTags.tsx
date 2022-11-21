@@ -27,14 +27,14 @@ const useTags = ()=>{
     return result
   }
   const updateTag=(id:number,obj:{name:string})=>{
-    const tagsClone = JSON.parse(JSON.stringify(tags))
-    tagsClone.splice(findTagIndex(id),1,{ID:id,...obj})
-    setTags(tagsClone)
+    // const tagsClone = JSON.parse(JSON.stringify(tags))
+    // tagsClone.splice(findTagIndex(id),1,{ID:id,...obj})
+    setTags(tags.map(tag => tag.ID === id ? {ID:id,...obj} : tag))
   }
   const removeTag= (id:number)=>{
-    const tagsClone = JSON.parse(JSON.stringify(tags))
-    tagsClone.splice(findTagIndex(id),1)
-    setTags(tagsClone)
+    // const tagsClone = JSON.parse(JSON.stringify(tags))
+    // tagsClone.splice(findTagIndex(id),1)
+    setTags(tags.filter(tag=>tag.ID !== id))
   }
   return {tags,setTags,findTag,findTagIndex,updateTag,removeTag}
 }
