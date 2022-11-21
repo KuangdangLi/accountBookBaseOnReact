@@ -23,7 +23,7 @@ const Input: React.FC<Props> = (props) => {
   return (
     <Label>
       <span>{props.label}</span>
-      <input {...rest} />
+      <input {...rest} maxLength={8}/>
     </Label>
   );
 };
