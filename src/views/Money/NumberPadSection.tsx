@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import {compute} from './NumberPadSection/Compute';
 
@@ -25,6 +25,11 @@ const NumberPadSection:React.FC<Props> = (props)=>{
       props.onChange(medianValue)
     }
   }
+  useEffect(()=>{
+    if(props.value===0){
+      setInput('0')
+    }
+  },[props.value])
   const computeOutput = (e:React.MouseEvent)=>{
     const value =  (e.target as HTMLButtonElement).textContent
     if(value === null){return;}
