@@ -20,10 +20,6 @@ const NumberPadSection:React.FC<Props> = (props)=>{
     }else{
       medianValue = parseFloat(newValue)
     }
-    console.log('newValue');
-    console.log(newValue);
-    console.log('medianValue');
-    console.log(medianValue);
     setInput(newValue)
     if(typeof medianValue === 'number'){
       props.onChange(medianValue)
