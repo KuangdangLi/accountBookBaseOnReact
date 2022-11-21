@@ -21,7 +21,6 @@ const useTags = ()=>{
   },[])
   useUpdate(()=>{
     window.localStorage.setItem('tagList',JSON.stringify(tags))
-    console.log('执行了');
   },tags)
   const findTag = (id:number)=>{
      return  tags.filter(tag => tag.ID === id)[0];
