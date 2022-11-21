@@ -1,5 +1,5 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams,useHistory} from 'react-router-dom';
 import {useTags} from '../useTags';
 import Layout from '../components/Layout';
 import Icon from '../components/icon';
@@ -37,6 +37,10 @@ const Tag:React.FC = ()=>{
   const {id} = useParams<Params>()
   const ID = parseFloat(id)
   const tag = findTag(ID)
+  const history = useHistory()
+  const goBack = ()=>{
+    history.goBack()
+  }
   const content = (tag:{ID:number,name:string})=>(
     <div>
     <InputWrapper>
@@ -49,7 +53,7 @@ const Tag:React.FC = ()=>{
   return (
     <Layout>
       <TopBar>
-        <Icon name={'left'} />
+        <Icon name={'left'} onClick={goBack}/>
         <span>编辑标签</span>
       </TopBar>
       {tag ? content(tag) : <div>标签不存在</div>}
