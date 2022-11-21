@@ -20,7 +20,9 @@ const defaultRecordItem = {
   type: '-' as Type,
   amount: 0
 }
-
+const TypeSectionWrapper = styled.div`
+  background-color: #C4C4C4;
+`
 const Money=()=>{
   const [recordItem,setRecordItem] = useState(defaultRecordItem)
   const {recordList,addRecord} = useRecords()
@@ -40,7 +42,9 @@ const Money=()=>{
       {JSON.stringify(recordList)}
       <TagsSection value={recordItem.tagID} onChange={(tagID)=>{onChange({tagID})}}/>
       <NotesSection value={recordItem.note} onChange={(note)=>{onChange({note})}}/>
+      <TypeSectionWrapper>
       <TypesSection value={recordItem.type} onChange={(type)=>{onChange({type})}}/>
+      </TypeSectionWrapper>
       <NumberPadSection value={recordItem.amount}
                         onChange={(amount)=>{onChange({amount})}}
                         onOK={()=>{submit()}}

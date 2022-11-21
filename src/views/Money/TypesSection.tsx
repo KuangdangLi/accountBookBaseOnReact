@@ -9,7 +9,6 @@ const Wrapper = styled.section`
     width: 50%;
     font-size: 24px;
     line-height: 64px;
-    background-color: #C4C4C4;
     position: relative;
   &.selected::after{
     content: '';
