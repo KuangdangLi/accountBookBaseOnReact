@@ -25,7 +25,7 @@ const TypeSectionWrapper = styled.div`
 `
 const Money=()=>{
   const [recordItem,setRecordItem] = useState(defaultRecordItem)
-  const {recordList,addRecord} = useRecords()
+  const {addRecord} = useRecords()
   const onChange = (obj:Partial<RecordItem>)=>{
     setRecordItem({...recordItem, ...obj})
   }
@@ -39,7 +39,6 @@ const Money=()=>{
   }
   return (
     <MyLayout>
-      {JSON.stringify(recordList)}
       <TagsSection value={recordItem.tagID} onChange={(tagID)=>{onChange({tagID})}}/>
       <NotesSection value={recordItem.note} onChange={(note)=>{onChange({note})}}/>
       <TypeSectionWrapper>
