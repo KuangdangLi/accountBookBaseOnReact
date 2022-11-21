@@ -21,7 +21,6 @@ const compute = (value:string,output:string)=>{
       return ''
     case '.':
       if(output.indexOf('.')>=0){return output}
-      console.log('执行了吗');
       return output + '.'
     default:
       return ''

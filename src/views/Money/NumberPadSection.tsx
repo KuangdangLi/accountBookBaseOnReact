@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import {compute} from './NumberPadSection/Compute';
 
@@ -9,19 +9,24 @@ type Props = {
 }
 
 const NumberPadSection:React.FC<Props> = (props)=>{
-  const output = props.value.toString()
-  const setOutput = (output:string)=>{
-     let value
-    if(output.length>16){
-      value = output.slice(0,16)
-    }else if(output.length === 0){
-      value = 0
+  const [input,setInput] = useState('0')
+  const setOutput = (newValue:string)=>{
+     let medianValue
+    if(newValue.length>16){
+      medianValue = newValue.slice(0,16)
+    }else if(newValue.length === 0){
+      medianValue = 0
+      newValue = '0'
     }else{
-      value = parseFloat(output)
+      medianValue = parseFloat(newValue)
     }
-    console.log(value);
-    if(typeof value === 'number'){
-      props.onChange(value)
+    console.log('newValue');
+    console.log(newValue);
+    console.log('medianValue');
+    console.log(medianValue);
+    setInput(newValue)
+    if(typeof medianValue === 'number'){
+      props.onChange(medianValue)
     }
   }
   const computeOutput = (e:React.MouseEvent)=>{
@@ -32,15 +37,15 @@ const NumberPadSection:React.FC<Props> = (props)=>{
       return
     }
     if('0123456789.'.split('').concat(['删除','清空']).indexOf(value)>=0){
-      let newValue = compute(value,output)
-      console.log(newValue);
+      let newValue = compute(value,input)
+
       setOutput(newValue)
     }
   }
   return (
     <Wrapper>
       <div className="output">
-        {output}
+        {input}
       </div>
       <div className="pad clearfix" onClick={computeOutput}>
         <button>1</button>
