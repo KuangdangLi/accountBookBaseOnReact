@@ -20,11 +20,11 @@ const NumberPadSection:React.FC<Props> = (props)=>{
     }else if((newValue).indexOf('.')>=0){
       const [,float]=newValue.split('.')
       if(float.length>2) return
-    } else{
-      medianValue = parseFloat(newValue)
     }
+    medianValue = parseFloat(newValue)
     setInput(newValue)
     if(typeof medianValue === 'number'){
+
       props.onChange(medianValue)
     }
   }
