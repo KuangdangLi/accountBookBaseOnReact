@@ -12,12 +12,15 @@ const NumberPadSection:React.FC<Props> = (props)=>{
   const [input,setInput] = useState('0')
   const setOutput = (newValue:string)=>{
      let medianValue
-    if(newValue.length>16){
-      medianValue = newValue.slice(0,16)
+    if(newValue.length>7 && !(newValue.indexOf('.')>=0)){
+      newValue = newValue.slice(0,7)
     }else if(newValue.length === 0){
       medianValue = 0
       newValue = '0'
-    }else{
+    }else if((newValue).indexOf('.')>=0){
+      const [,float]=newValue.split('.')
+      if(float.length>2) return
+    } else{
       medianValue = parseFloat(newValue)
     }
     setInput(newValue)
@@ -39,7 +42,6 @@ const NumberPadSection:React.FC<Props> = (props)=>{
     }
     if('0123456789.'.split('').concat(['删除','清空']).indexOf(value)>=0){
       let newValue = compute(value,input)
-
       setOutput(newValue)
     }
   }
