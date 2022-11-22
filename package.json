@@ -1,6 +1,7 @@
 {
   "name": "drizzle-accountbook-react",
   "version": "0.1.0",
+  "homepage": "https://KuangdangLi.github.io/drizzle-accountBook-React/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
