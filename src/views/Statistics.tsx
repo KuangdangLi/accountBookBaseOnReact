@@ -33,6 +33,8 @@ const Header = styled.h3`
   line-height: 20px;
   padding: 10px 16px;
   margin-right: auto;
+  display: flex;
+  justify-content: space-between;
 `
 
 const Statistics=()=>{
@@ -43,29 +45,39 @@ const Statistics=()=>{
     setType(value)
   }
   const selectedRecordList = recordList.filter((recordItem)=>recordItem.type === type)
-  const hash:{[title:string]:RecordItem[]} = {}
+  const hash:{[title:string]: { List:RecordItem[],total:number }} = {}
   selectedRecordList.forEach((recordItem)=>{
     const key = dayjs(recordItem.createdAt).format('YYYY年MM月DD日')
     if(!hash[key]){
-      hash[key] = []
+      hash[key] = {List:[],total: 0}
     }
-    hash[key].push(recordItem)
+    hash[key].List.push(recordItem)
   })
-  const array = Object.entries(hash).sort((a,b)=>{
-    if(a[0]===b[0])return 0;
-    if(a[0]>b[0])return 1;
-    if(a[0]<b[0])return -1;
-    return 0
-  })
+  const array = ()=>{
+    for(let key in hash){
+     hash[key].total = hash[key].List.reduce((sum,item)=>{return ((sum*100) + (item.amount*100))/100},0)
+
+    }
+    return Object.entries(hash).sort((a,b)=>{
+      if(a[0]===b[0])return 0;
+      if(a[0]>b[0])return 1;
+      if(a[0]<b[0])return -1;
+      return 0
+    })
+  }
+
   return (
     <Layout>
       <TypesSectionWrapper>
       <TypesSection value={type} onChange={selectType} />
       </TypesSectionWrapper>
-      {array.map(group=>(
+      {array().map(group=>(
         <div key={group[0]}>
-          <Header>{group[0]}</Header>
-          {group[1].map(recordItem=>
+          <Header>
+          <div>{group[0]}</div><div>￥{group[1].total}</div>
+            {/*group[1].reduce((sum,item)=>{return ((sum*100) + (item.amount*100))/100},0)*/}
+          </Header>
+          {group[1].List.map(recordItem=>
             <Item key={recordItem.createdAt}>
               <div  className='content'>
                 <div>{findTag(recordItem.tagID).name}</div>
