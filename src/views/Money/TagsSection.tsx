@@ -11,12 +11,12 @@ const Wrapper = styled.section`
   align-items: flex-start;
   padding: 16px 12px; 
   background-color: #fff;
+  overflow-y: hidden;
   ol{
     display: flex;
     flex-direction: row;
-    width: 100vw;
     flex-wrap: wrap;
-    
+    overflow-y: auto;
     >li{
       margin-right: 24px;
       margin-top: 16px;
@@ -75,8 +75,6 @@ const TagsSection:React.FC<Props> = (props)=>{
   }
   return (
     <Wrapper>
-      {tags.map(tag=>tag.ID)}
-      {tags.map(tag=>tag.name)}
     <ol>
       {tags.map(tag=><li key={tag.ID} onClick={()=>selectTag(tag.ID)} className={tag.ID === props.value ? 'selected' : ''}>{tag.name}</li>)}
     </ol>

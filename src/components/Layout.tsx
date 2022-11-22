@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
   flex-grow: 1;
-  overflow: hidden;
+  overflow-y: hidden;
   text-align: center;
   background-color: #f5f5f5;
 `
