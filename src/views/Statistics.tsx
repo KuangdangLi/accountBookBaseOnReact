@@ -44,7 +44,7 @@ const Statistics=()=>{
   }
   const selectedRecordList = recordList.filter((recordItem)=>recordItem.type === type)
   const hash:{[title:string]:RecordItem[]} = {}
-  selectedRecordList.map((recordItem)=>{
+  selectedRecordList.forEach((recordItem)=>{
     const key = dayjs(recordItem.createdAt).format('YYYY年MM月DD日')
     if(!hash[key]){
       hash[key] = []
@@ -63,11 +63,11 @@ const Statistics=()=>{
       <TypesSection value={type} onChange={selectType} />
       </TypesSectionWrapper>
       {array.map(group=>(
-        <div>
+        <div key={group[0]}>
           <Header>{group[0]}</Header>
           {group[1].map(recordItem=>
-            <Item>
-              <div id={recordItem.tagID.toString()} className='content'>
+            <Item key={recordItem.createdAt}>
+              <div  className='content'>
                 <div>{findTag(recordItem.tagID).name}</div>
                 <div className='note'>{recordItem.note}</div>
                 <div>￥{recordItem.amount}</div>
