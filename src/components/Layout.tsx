@@ -3,9 +3,14 @@ import Nav from './Nav';
 import React from 'react';
 
 const Wrapper = styled.div`
+  @media (min-width: 500px){
+    width: 500px;
+    margin: 0 auto;
+  }
   display: flex;
   height: 100vh;
   flex-direction: column;
+  transform: rotate(360deg);
 `
 
 const Main = styled.main`

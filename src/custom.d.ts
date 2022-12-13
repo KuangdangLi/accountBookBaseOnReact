@@ -8,3 +8,21 @@ type RecordItem = {
   createdAt:string
 }
 type NewRecordItem = Omit<RecordItem, 'createdAt'>
+
+type ChartOption = {
+  dateArr:string[]
+  amountArr:number[]
+  pieChartOption:PieChartOption[]
+}
+
+type IdAndAmount={
+  [id:number]:number
+}
+
+type PieChartOption = {
+  value:number,
+  name:string,
+  itemStyle:object
+}
+
+type Tag = {ID:number,name:string,type:Type}

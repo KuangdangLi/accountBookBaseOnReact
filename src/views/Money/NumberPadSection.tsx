@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {Wrapper} from './NumberPadSection/Wrapper';
 import {compute} from './NumberPadSection/Compute';
 
 type Props = {
-  value:number,
+  value:number
+  type:Type
   onChange:(amount:number)=>void
   onOK:()=>void
 }
@@ -33,6 +34,18 @@ const NumberPadSection:React.FC<Props> = (props)=>{
       setInput('0')
     }
   },[props.value])
+  const typeColor = useMemo(()=>{
+    let className = ''
+      if(props.type === '-'){
+        className = 'minus'
+      }else if(props.type === '+'){
+        className = 'plus'
+      }
+      if(props.value !== 0){
+        className = className.concat(' ready')
+      }
+      return className
+  },[props.type,props.value])
   const computeOutput = (e:React.MouseEvent)=>{
     const value =  (e.target as HTMLButtonElement).textContent
     if(value === null){return;}
@@ -62,7 +75,7 @@ const NumberPadSection:React.FC<Props> = (props)=>{
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button className="ok">OK</button>
+        <button className={`ok ${typeColor}`} >OK</button>
         <button className="zero">0</button>
         <button className="dot">.</button>
       </div>

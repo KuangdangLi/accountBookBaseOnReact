@@ -1,5 +1,5 @@
 import React from 'react';
-import {useParams,useHistory} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import {useTags} from '../Hooks/useTags';
 import Layout from '../components/Layout';
 import Icon from '../components/icon';
@@ -41,13 +41,13 @@ const Tag:React.FC = ()=>{
   const goBack = ()=>{
     history.goBack()
   }
-  const content = (tag:{ID:number,name:string})=>(
+  const content = (tag:{ID:number,name:string,type:Type})=>(
     <div>
-    <InputWrapper>
-      <Input label='标签名' type="text"  placeholder='请输入标签名' value={tag.name} onChange={(e)=>{updateTag(ID,{name:e.target.value})}}/>
-    </InputWrapper>
-  <Space />
-  <Button onClick={()=>{removeTag(ID)}}>删除标签</Button>
+      <InputWrapper>
+        <Input label='标签名' type="text"  placeholder='请输入标签名' value={tag.name} onChange={(e)=>{updateTag(ID,{name:e.target.value},tag.type)}}/>
+      </InputWrapper>
+      <Space />
+      <Button onClick={()=>{removeTag(ID);history.goBack()}}>删除标签</Button>
     </div>
   )
   return (

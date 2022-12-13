@@ -10,11 +10,29 @@ const Wrapper = styled.section`
     font-size: 24px;
     line-height: 64px;
     position: relative;
-  &.selected::after{
+    &:nth-child(1){
+      //background-color: rgba(62, 181, 117,0.5);
+      background-color: #fff;
+      color: black;
+      &.selected{
+        background-color: rgb(62, 181, 117);
+        color: white;
+      }
+    }
+    &:nth-child(2){
+      //background-color: rgba(227, 174, 0,0.5);
+      background-color: white;
+      color: black;
+      &.selected{
+        background-color: rgb(227, 174, 0);
+        color: white;
+      }
+    }
+  &:not(.selected)::after{
     content: '';
     display: block;
-    height: 4px;
-    background-color: #333;
+    height: 2px;
+    background-color: #e7e7e7;
     position: absolute;
     width: 100%;
     bottom: 0;
