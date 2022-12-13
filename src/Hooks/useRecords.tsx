@@ -4,10 +4,10 @@ import {useUpdate} from './useUpdate';
 const useRecords = ()=>{
   const [recordList,setRecordList] = useState<RecordItem[]>([])
   useEffect(()=>{
-    setRecordList(JSON.parse(window.localStorage.getItem('recordList') || '[]'))
+    setRecordList(JSON.parse(window.localStorage.getItem('reactRecordList') || '[]'))
   },[])
   useUpdate(()=>{
-    window.localStorage.setItem('recordList',JSON.stringify(recordList))
+    window.localStorage.setItem('reactRecordList',JSON.stringify(recordList))
   },recordList)
   const addRecord=(newRecord:RecordItem)=>{
     if(newRecord.amount === 0){window.alert('请输入金额');return false}

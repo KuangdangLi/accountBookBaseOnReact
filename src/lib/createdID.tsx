@@ -1,7 +1,7 @@
-let id = JSON.parse(window.localStorage.getItem('ID') || '0')
+let id = JSON.parse(window.localStorage.getItem('reactID') || '0')
 const createdID = ()=>{
   id+=1;
-  window.localStorage.setItem('ID',JSON.stringify(id))
+  window.localStorage.setItem('reactID',JSON.stringify(id))
   return id
 }
 

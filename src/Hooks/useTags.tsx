@@ -24,11 +24,11 @@ const useTags = ()=>{
   const [tags,setTags] = useState<Tag[]>([])
   const {recordList} = useRecords()
   useEffect(()=>{
-    const localTagList = JSON.parse(window.localStorage.getItem('tagList') || '[]')
+    const localTagList = JSON.parse(window.localStorage.getItem('reactTagList') || '[]')
     localTagList.length === 0 ? setTags(defaultTags()) : setTags(localTagList)
   },[])
   useUpdate(()=>{
-    window.localStorage.setItem('tagList',JSON.stringify(tags))
+    window.localStorage.setItem('reactTagList',JSON.stringify(tags))
   },tags)
   const findTag = (id:number):Tag=>{
      return  tags.filter(tag => tag.ID === id)[0];
