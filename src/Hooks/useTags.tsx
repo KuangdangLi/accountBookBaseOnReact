@@ -14,8 +14,8 @@ const defaultTags = ():Tag[]=>{
     {ID:createdID(),name:'工资',type:'+'},
     {ID:createdID(),name:'奖金',type:'+'},
     {ID:createdID(),name:'红包',type:'+'},
-    {ID:createdID(),name:'其它',type:'-'},
-    {ID:createdID(),name:'其它',type:'+'},
+    {ID:createdID(),name:'其它支出',type:'-'},
+    {ID:createdID(),name:'其它收入',type:'+'},
 
   ]
 }
