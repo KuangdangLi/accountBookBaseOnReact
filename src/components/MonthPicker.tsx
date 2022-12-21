@@ -1,6 +1,7 @@
 import React, {useMemo, useState} from 'react';
 import dayjs, {Dayjs} from 'dayjs';
 import styled from 'styled-components';
+import Icon from './icon';
 
 const MonthPickerWrapper = styled.div`
   position: relative;
@@ -16,6 +17,15 @@ const MonthPickerWrapper = styled.div`
     color: black;
     cursor: pointer;
     user-select: none;
+    >.iconWrapper{
+      margin-top: -3px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      >svg{
+        fill: #3eb575;
+      }
+    }
   }
   >.picker {
     position: absolute;
@@ -107,7 +117,12 @@ const MonthPicker:React.FC<Props> = (props)=>{
   }
   return (
     <MonthPickerWrapper>
-      <div className={'trigger'} onClick={()=>{setPickerSwitch(!pickerSwitch)}}>{initMonth.format('YYYY年MM月')}</div>
+      <div className={'trigger'} onClick={()=>{setPickerSwitch(!pickerSwitch)}}>
+        <div className="iconWrapper">
+          <Icon name='calendar'/>
+        </div>
+       <span>{initMonth.format('YYYY年MM月')}</span>
+      </div>
       {pickerSwitch&&<div className={'picker'}>
         <div className={'head'}>
           <span onClick={() => {setMedium(medium.year(medium.year() - 1));}}>&lt;</span>

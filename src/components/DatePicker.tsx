@@ -2,6 +2,7 @@ import React, {useEffect, useMemo, useState} from 'react';
 
 import dayjs, {Dayjs} from 'dayjs';
 import styled from 'styled-components';
+import Icon from './icon';
 
 const DatePickerWrapper = styled.div`
   position: relative;
@@ -18,6 +19,15 @@ const DatePickerWrapper = styled.div`
     color: black;
     cursor: pointer;
     user-select: none;
+    >.iconWrapper{
+      margin-top: -3px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      > svg{
+        fill: #3eb575;
+      }
+    }
   }
   >.picker {
     position: absolute;
@@ -155,7 +165,12 @@ const DatePicker:React.FC<Props> = (props)=>{
   })
   return (
     <DatePickerWrapper>
-      <div className={'trigger'} onClick={()=>{setPickerSwitch(!pickerSwitch);}}>{(selectedDate||initDate).format('YYYY-MM-DD')}</div>
+      <div className={'trigger'} onClick={()=>{setPickerSwitch(!pickerSwitch);}}>
+        <div className="iconWrapper">
+          <Icon name='calendar'/>
+        </div>
+        <span>{(selectedDate||initDate).format('YYYY-MM-DD')}</span>
+      </div>
       {/*{pickerSwitch.current && }*/}
       {pickerSwitch && <div className={'picker'}>
         <div className={'head'}>
