@@ -76,8 +76,8 @@ const Money=()=>{
     <MyLayout>
       <TagsSection value={recordItem.tagID} type={recordItem.type} onChange={(tagID)=>{onChange({tagID})}}/>
       <LayWrapper>
-        <NotesSection value={recordItem.note} onChange={(note)=>{onChange({note})}}/>
         <DatePicker initDate={dayjs()} selectDate={(day)=>{onChange({createdAt:day.toISOString()})}} />
+        <NotesSection value={recordItem.note} onChange={(note)=>{onChange({note})}}/>
       </LayWrapper>
       <TypesSection value={recordItem.type} onChange={(type)=>{onChange({type})}}/>
       <NumberPadSection value={recordItem.amount} type={recordItem.type}
