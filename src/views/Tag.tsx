@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams, useHistory} from 'react-router-dom';
 import {useTags} from '../Hooks/useTags';
 import Layout from '../components/Layout';
@@ -37,6 +37,12 @@ const Tag:React.FC = ()=>{
   const {id} = useParams<Params>()
   const ID = parseFloat(id)
   const tag = findTag(ID)
+  const [medium,setMedium] = useState('')
+  useEffect(()=>{
+    if(tag){
+      setMedium(tag.name);
+    }
+  },[tag])
   const history = useHistory()
   const goBack = ()=>{
     history.goBack()
@@ -44,9 +50,11 @@ const Tag:React.FC = ()=>{
   const content = (tag:{ID:number,name:string,type:Type})=>(
     <div>
       <InputWrapper>
-        <Input label='标签名' type="text"  placeholder='请输入标签名' value={tag.name} onChange={(e)=>{updateTag(ID,{name:e.target.value},tag.type)}}/>
+        <Input label='标签名' type="text"  placeholder='请输入标签名'  value={medium}  onChange={(e)=>{setMedium(e.target.value)}}/>
+        {/*value={tag.name}  onChange={(e)=>{console.log(e.target.value);updateTag(ID,{name:e.target.value},tag.type)}}*/}
       </InputWrapper>
       <Space />
+      <Button onClick={()=>{updateTag(ID,{name:medium},tag.type)}}>修改标签</Button>
       <Button onClick={()=>{removeTag(ID);history.goBack()}}>删除标签</Button>
     </div>
   )

@@ -46,7 +46,20 @@ const useTags = ()=>{
   const updateTag=(id:number,obj:{name:string},type:Type)=>{
     // const tagsClone = JSON.parse(JSON.stringify(tags))
     // tagsClone.splice(findTagIndex(id),1,{ID:id,...obj})
-    setTags(tags.map(tag => tag.ID === id ? {ID:id,type,...obj} : tag))
+    let {name} = obj
+    if(!name || name.indexOf(' ')>= 0){
+      window.alert('请输入标签名')
+      return
+    }else if(tags.map(tag=>tag.name).indexOf(name)>=0){
+      window.alert('标签名不能重复')
+      return;
+    }else if(name.length>6){
+      window.alert('标签名不能过长')
+      return;
+    }else{
+      setTags(tags.map(tag => tag.ID === id ? {ID:id,type,...obj} : tag))
+    }
+    // setTags(tags.map(tag => tag.ID === id ? {ID:id,type,...obj} : tag))
   }
   const removeTag= (id:number)=>{
     // const tagsClone = JSON.parse(JSON.stringify(tags))

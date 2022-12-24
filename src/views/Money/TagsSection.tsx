@@ -121,14 +121,13 @@ const TagsSection:React.FC<Props> = (props)=>{
   },[props.value,props.type])
   const addTag = ()=>{
      const newTagName = window.prompt('请输入新标签名')
-    if(newTagName === '' || newTagName === ' '){
+    if(!newTagName || newTagName.indexOf(' ')>= 0){
       window.alert('请输入标签名')
-    }else if(newTagName === null){
       return
     }else if(tags.map(tag=>tag.name).indexOf(newTagName)>=0){
       window.alert('不能输入重复的标签名')
       return;
-    }else if(newTagName.length>4){
+    }else if(newTagName.length>6){
       window.alert('标签名过长')
       return;
     }else{
