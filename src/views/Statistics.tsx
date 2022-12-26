@@ -282,14 +282,16 @@ const Statistics=()=>{
   },[selectedRecordList,findTag,type])
   const modifyOpacity =()=>{
     const x = document.getElementsByClassName('buttonWrapper')[0] as HTMLDivElement
-    const xx = document.getElementsByClassName('groupList')[0].scrollTop
-    setTimeout(()=>{
-      if(document.getElementsByClassName('groupList')[0].scrollTop === xx){
-        (x).style.opacity = '1'
-      }else {
-        (x).style.opacity = '0.5'
-      }
-    },20)
+    const xx = document.getElementsByClassName('groupList')[0]?.scrollTop
+    if(x&&xx){
+      setTimeout(()=>{
+        if(document.getElementsByClassName('groupList')[0]?.scrollTop === xx){
+          (x).style.opacity = '1'
+        }else {
+          (x).style.opacity = '0.5'
+        }
+      },20)
+    }
   }
   useEffect(()=>{
     window.addEventListener('scroll',modifyOpacity,true)
