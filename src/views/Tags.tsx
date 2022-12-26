@@ -12,6 +12,8 @@ const TagList = styled.ol`
   margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  max-height: 80vh;
+  overflow-y: auto;
   &.minus{
     .iconWrapper{
       background-color: #3eb575;
